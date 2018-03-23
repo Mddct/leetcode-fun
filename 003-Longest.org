@@ -22,6 +22,7 @@ Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer 
 note：循环不变式，有助于写出正确的算法，包括边界。
 
 #+BEGIN_SRC go
+  // assume s is adcii
   func lengthOfLongestSubstring(s string) int {
     //[)
     i, j := 0, 0
@@ -50,32 +51,5 @@ note：循环不变式，有助于写出正确的算法，包括边界。
     return ml
   }
 
-
-  // assume s is adcii
-  func lengthOfLongestSubstring(s string) int {
-    //[)
-    i, j := 0, 0
-    cl := 0
-    ml := 0 
-    // 模拟set
-    s := make(map[rune]struct{})
-    for j < len(s){
-      if _, ok := s[s[j]]; !ok{
-        s[j] =  struct{}
-        j++
-        cl = j-i+1
-        if cl > ml{
-          ml = cl
-        }
-      }else{
-        if s[i] != s[j]{
-          delete(s, s[i])
-        }
-        i++
-      }
-		
-    }
-    return ml
-  }
 
 #+END_SRC
