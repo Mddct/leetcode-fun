@@ -1,10 +1,10 @@
 * twoSum
-** 题目大意：给定数组和target，判断数组中是否存在索引i，j：
+** 题目大意：给定数组和target，判断数组中是否存在索引 i，j：
    - s[i] + s[j] == target
    - i != j。
 ** 分析： a + b = target，如何遍历得到 a和b 。
 ***   解法一：暴力
-    - 定义 (i, j)， j  > i. i \in [0,len(s)), j \ in [i+1, len(s))
+    - 定义 (i, j)， j  > i. i \in [0,len(s)), j \in [i+1, len(s))
     - 暴力，二重循环，时间复杂度O(n^2)
       #+BEGIN_SRC go
       func twoSum(nums []int, target int) []int {
