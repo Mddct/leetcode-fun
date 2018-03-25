@@ -49,6 +49,14 @@ Find the median of the two sorted arrays. The overall run time complexity should
 
 需要注意数组下标的合法性。
 ** 二分
+题目提示log级别，考虑“二分”，l = len(nums1) + len(nums2), p1 = $\frac{l}{2}$, p2 =l-p1
+
+- l 可能为奇数 偶数， 则实现发现第k大的数：findKthSortedArrays
+- nums1[p1-1] <= nums1[p2-1] 则可以考虑扔掉p1之前的元素，findKthSortedArrays（nums1[p1:], nums2, k-p1）
+- nums1[p1-1] >= nums2[p2-1] 则可以考虑扔掉p2之前的元素，findKthSortedArrays(num1, nums2[p2:], k-p2)
+- 当扔掉k-1个元素时候，就可以知道第k个元素在哪
+- 需要注意数组下标的合法性。
+
 #+BEGIN_SRC go
   func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
     l := len(nums1) + len(nums2)
