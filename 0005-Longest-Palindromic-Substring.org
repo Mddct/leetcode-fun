@@ -1,0 +1,38 @@
+> Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. 
+
+- 暴力：[i, j] ，遍历i， j O(n^2), 判断[i,j]回文O(n^2), 总时间复杂度O(n^3)
+- 优化一： 对于第i个元素，考虑以i为中心的元素是否为回文（[l,i] [i, r] ）；或者[l,i] [i+1, r] 回文。时间复杂度O(n^2)
+#+BEGIN_SRC go
+  func maxPalindrome(s string, left, right int) (int, int) {
+          for left >= 0 && right < len(s) {
+                  if s[left] == s[right] {
+                          left--
+                          right++
+                  }else{
+                          break
+                  }
+          }
+          // [left, right]
+          return left + 1, right - 1
+  }
+  func longestPalindrome(s string) string {
+          l, r := 0, 0
+          for i := 0; i < len(s); i++ {
+                  // [0, s)
+                  nl, nr := maxPalindrome(s, i, i)
+                  if nr-nl > r-l {
+                          l = nl
+                          r = nr
+                  }
+      nl, nr = maxPalindrome(s, i, i+1)
+      if nr-nl > r-l {
+                          l = nl
+                          r = nr
+      }
+          }
+          return s[l : r+1]
+  }
+
+#+END_SRC
+
+- [TODO] 优化二 xxx算法
