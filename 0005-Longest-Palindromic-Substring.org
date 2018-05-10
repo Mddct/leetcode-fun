@@ -35,7 +35,7 @@
 
 #+END_SRC
 
-- [TODO] 优化二 xxx算法
+- 优化二 [[https://articles.leetcode.com/longest-palindromic-substring-part-ii/][Manacher’s algorithm]]
 #+BEGIN_SRC go
 
 
@@ -87,5 +87,13 @@ func longestPalindrome(s string) string {
 }
 #+END_SRC
 
-[[https://articles.leetcode.com/longest-palindromic-substring-part-ii/][Manacher’s algorithm]]
+- 动态规划 时间复杂度O(n^2)
+dp[i][j] = dp[i+1][j-1] == 1 && s[i] == s[j]
+遍历整个二维数组，找出max（j-i）and dp[i][j] == 1
+#+BEGIN_SRC go
+  func longestPalindrome(s string) string{
+  }
+#+END_SRC
+
+
 
